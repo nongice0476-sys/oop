@@ -1,58 +1,16 @@
-<!doctype html><html lang='th'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1,viewport-fit=cover'><title>Python OOP — Class & Object University Short Note</title><style>
-:root{color-scheme:dark;--bg:#07111f;--card:#132944;--panel:#0c1a2d;--line:#315074;--text:#f4f7fc;--muted:#abc0da;--gold:#e2b557}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,"Noto Sans Thai",Tahoma,sans-serif;line-height:1.65}.wrap{max-width:1080px;margin:auto;padding:16px}header{position:sticky;top:0;background:#07111ff5;border-bottom:1px solid var(--line);z-index:5}.head{max-width:1080px;margin:auto;padding:14px 16px}section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px}.code{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#071525;padding:10px;border-radius:9px}.warn{border-left:3px solid var(--gold);padding-left:10px}@media(max-width:760px){.grid{grid-template-columns:1fr}}</style></head><body><header><div class='head'><h1>📘 Python OOP — Class & Object (University Level)</h1><div style='color:var(--muted)'>ยึดหัวข้อเดิมของอาจารย์ แต่เพิ่มการวิเคราะห์ code และ attribute behavior</div></div></header><div class='wrap'>
-<section><h2>1) Class & Object</h2><div class='code'>class Student:
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Python OOP — Short Note</title><style>:root{color-scheme:dark;--bg:#07111f;--card:#132944;--line:#315074;--text:#f4f7fc;--muted:#abc0da}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,"Noto Sans Thai",Tahoma,sans-serif;line-height:1.65}.wrap{max-width:1000px;margin:auto;padding:16px}section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:14px 0}.code{white-space:pre-wrap;font-family:ui-monospace,monospace;background:#071525;padding:10px;border-radius:9px}.muted{color:var(--muted)}</style></head><body><div class="wrap"><h1>📘 Python OOP — Class & Object</h1><p class="muted">ยึดเฉพาะเนื้อหาที่อาจารย์สอน</p><section><h2>Class & Object</h2><div class="code">class Student:
     pass
 
 s1 = Student()
-s2 = Student()</div><p>Class = แม่แบบ • Object/Instance = สิ่งที่สร้างจาก class • <b>s1 และ s2 เป็นคนละ object</b></p></section>
-<section><h2>2) Class Attribute vs Object Property</h2><div class='code'>class Student:
-    university = "KMITL"
-
-s1 = Student()
-s2 = Student()
-
-s1.university = "ABC"</div><div class='grid'><div class='box'><b>s1.university</b> → ABC</div><div class='box'><b>s2.university</b> → KMITL</div><div class='box'><b>Student.university</b> → KMITL</div><div class='box'>เหตุผล: property ของ object สามารถ <b>บัง (shadow)</b> class attribute ที่ชื่อเดียวกัน</div></div></section>
-<section><h2>3) Attribute Lookup ที่ควรเข้าใจ</h2><p>เมื่ออ่าน <code>obj.x</code> ในระดับบทนี้ ให้คิดเป็นลำดับ:</p><div class='code'>1) obj มี property x ของตัวเองไหม?
-   → ถ้ามี: ใช้ค่านั้น
-2) ถ้าไม่มี: class มี attribute x ไหม?
-   → ถ้ามี: ใช้ค่าจาก class</div></section>
-<section><h2>4) Method และ self</h2><div class='code'>class Box:
-    value = 2
+s2 = Student()</div><p>Class = แม่แบบ • Object = instance ที่สร้างจาก class</p></section><section><h2>Class Attribute</h2><div class="code">class Student:
+    university = "KMITL"</div><p>ประกาศใน class body และใช้ร่วมกันได้จนกว่า object จะมี property ชื่อเดียวกันมาบัง</p></section><section><h2>Method และ self</h2><div class="code">class Student:
     def show(self):
-        return self.value
-
-b = Box()
-b.value = 9
-print(b.show())   # 9</div><p><b>self</b> อ้างถึง object ที่กำลังเรียก method ดังนั้น <code>self.value</code> จึงอ่าน state ของ object นั้นก่อน</p></section>
-<section><h2>5) a.f() กับ A.f(a)</h2><div class='code'>class A:
-    def f(self):
-        return self
-
-a = A()
-
-a.f()
-A.f(a)</div><p>ในเชิงแนวคิด ทั้งสองกรณีส่ง object <code>a</code> เข้า parameter ตัวแรกของ method</p></section>
-<section><h2>6) Aliasing — จุดที่ข้อสอบชอบหลอก</h2><div class='code'>a = A()
-b = a
-
-b.x = 10
-print(a.x)   # 10</div><p><b>b = a ไม่ได้สร้าง object ใหม่</b> แต่ทำให้มี 2 ชื่ออ้างถึง object เดียวกัน</p></section>
-<section><h2>7) del property vs del object reference</h2><div class='grid'><div class='box'><div class='code'>del obj.x</div><p>ลบ property x ของ object</p></div><div class='box'><div class='code'>del obj</div><p>ลบชื่อ/reference obj</p></div></div><div class='warn'>ถ้ายังมีชื่ออื่นอ้าง object เดิมอยู่ เช่น <code>b = obj</code> แล้ว <code>del obj</code> → b ยังอาจใช้งาน object เดิมได้</div></section>
-<section><h2>8) del แล้ว class attribute โผล่กลับมา</h2><div class='code'>class A:
+        return self.university</div><p><code>self</code> อ้างถึง object ที่เรียก method</p></section><section><h2>Object Property</h2><div class="code">s1.name = "Ann"
+s1.name = "May"
+del s1.name</div><p>กำหนด • แก้ • ลบ property ผ่าน object ได้โดยตรง</p></section><section><h2>Attribute Lookup</h2><div class="code">class A:
     x = 1
 
 a = A()
-a.x = 9
-print(a.x)   # 9
-
-del a.x
-print(a.x)   # 1</div><p>เพราะ instance property x ถูกลบ แล้ว lookup กลับไปเจอ class attribute x</p></section>
-<section><h2>9) Naming & pass</h2><div class='grid'><div class='box'><b>Class Naming</b><div>PascalCase: StudentRecord, BankAccount</div></div><div class='box'><b>pass</b><div>placeholder เพื่อให้ block ว่าง syntax ถูกต้อง</div></div></div></section>
-<section><h2>10) Checklist ก่อนตอบข้อเขียน</h2><div class='warn'>ตอบให้ครบ 4 อย่าง: <b>(1) มี object กี่ตัว (2) ชื่อไหนเป็น alias (3) attribute มาจาก object หรือ class (4) del กำลังลบ property หรือ reference</b></div></section>
-
-<section><h2>11) Testcase แบบ Sample Run</h2>
-<div class='box'><b>รูปแบบเหมือนระบบส่งงานมหาวิทยาลัย</b>
-<div>แต่ละ Testcase แสดง <b>ผลการรันทั้งก้อน</b> ในกล่อง console</div>
-<div>ระบบรันโค้ดผู้ใช้จริง แล้วนำ stdout ทั้งก้อนไปเทียบกับตัวอย่าง</div>
-<div>มีปุ่ม Run Testcase แยกแต่ละเคส และ Run All Tests</div>
-</div></section></div></body></html>
+a.x = 9      # object property บัง class attribute
+del a.x      # กลับไปเห็น A.x = 1</div></section><section><h2>Alias / Reference</h2><div class="code">a = A()
+b = a</div><p><code>a</code> และ <code>b</code> อ้าง object เดียวกัน การแก้ state ผ่านชื่อหนึ่งจึงเห็นผลจากอีกชื่อ</p></section><section><h2>pass</h2><p><code>pass</code> คือ placeholder ที่ทำให้ block ว่างยังมี syntax ถูกต้อง</p></section><section><h2>Programming Testcases</h2><p><b>กด Run เพียงครั้งเดียว</b> ระบบจะรัน Testcases ทั้งหมดและเช็คทีละเคสอัตโนมัติ</p><p><b>เกณฑ์ตรวจโค้ดเป็น Black-box:</b> ไม่สนว่าเขียนด้วยวิธีไหน ไม่สนชื่อ variable หรือรูปแบบภายใน ขอเพียง output ของแต่ละ Testcase ตรงกับตัวอย่างก็ถือว่าผ่าน</p><p>คำอธิบายทฤษฎีประเมินแยกจากคะแนนโค้ด และสามารถอธิบายด้วยถ้อยคำของตนเองได้ถ้าหลักการถูกต้อง</p></section></div></body></html>
