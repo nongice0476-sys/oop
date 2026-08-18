@@ -1,30 +1,52 @@
-<!doctype html><html lang='th'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1,viewport-fit=cover'><title>Python OOP — Class and Object Short Note</title><style>
-:root{color-scheme:dark;--bg:#07111f;--card:#132944;--panel:#0c1a2d;--line:#315074;--text:#f4f7fc;--muted:#abc0da;--gold:#e2b557}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,"Noto Sans Thai",Tahoma,sans-serif;line-height:1.65}.wrap{max-width:1050px;margin:auto;padding:16px}header{position:sticky;top:0;background:#07111ff5;border-bottom:1px solid var(--line)}.head{max-width:1050px;margin:auto;padding:14px 16px}section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px}.code{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#071525;padding:10px;border-radius:9px}.warn{border-left:3px solid var(--gold);padding-left:10px}@media(max-width:760px){.grid{grid-template-columns:1fr}}</style></head><body><header><div class='head'><h1>📘 Python OOP — Class and Object</h1><div style='color:var(--muted)'>ยึดเฉพาะหัวข้อที่อาจารย์สอนแล้ว</div></div></header><div class='wrap'>
-<section><h2>1) Create a Class in Python</h2><div class='code'>class Student:
-    pass</div><p><b>class</b> = keyword • ชื่อ class ตามด้วย <b>:</b> • block ต้องเยื้อง</p></section>
-<section><h2>2) Create Object of a Class</h2><div class='code'>s1 = Student()
-s2 = Student()</div><p>Object หรือ Instance คือสิ่งที่สร้างจาก class</p></section>
-<section><h2>3) Class Attributes</h2><div class='code'>class Student:
-    school = "KMITL"
-
-print(Student.school)</div><p>Class attribute ประกาศตรงใน class body และเป็นข้อมูลระดับ class</p></section>
-<section><h2>4) Class Methods</h2><div class='code'>class Student:
-    def greet(self):
-        print("Hello")
+<!doctype html><html lang='th'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1,viewport-fit=cover'><title>Python OOP — Class & Object University Short Note</title><style>
+:root{color-scheme:dark;--bg:#07111f;--card:#132944;--panel:#0c1a2d;--line:#315074;--text:#f4f7fc;--muted:#abc0da;--gold:#e2b557}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,"Noto Sans Thai",Tahoma,sans-serif;line-height:1.65}.wrap{max-width:1080px;margin:auto;padding:16px}header{position:sticky;top:0;background:#07111ff5;border-bottom:1px solid var(--line);z-index:5}.head{max-width:1080px;margin:auto;padding:14px 16px}section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;margin:14px 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px}.code{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#071525;padding:10px;border-radius:9px}.warn{border-left:3px solid var(--gold);padding-left:10px}@media(max-width:760px){.grid{grid-template-columns:1fr}}</style></head><body><header><div class='head'><h1>📘 Python OOP — Class & Object (University Level)</h1><div style='color:var(--muted)'>ยึดหัวข้อเดิมของอาจารย์ แต่เพิ่มการวิเคราะห์ code และ attribute behavior</div></div></header><div class='wrap'>
+<section><h2>1) Class & Object</h2><div class='code'>class Student:
+    pass
 
 s1 = Student()
-s1.greet()</div><p>Method คือ function ที่อยู่ใน class และ instance method มักใช้ <b>self</b> เป็น parameter แรก</p></section>
-<section><h2>5) Class Naming Convention</h2><div class='grid'><div class='box'><b>แนะนำ</b><div>Student</div><div>BankAccount</div><div>CourseRegistration</div></div><div class='box'><b>หลักจำ</b><div>ใช้ PascalCase สำหรับชื่อ class</div></div></div></section>
-<section><h2>6) pass Statement in Class</h2><div class='code'>class EmptyClass:
-    pass</div><p><b>pass</b> ไม่ทำงานอะไร ใช้เป็น placeholder เมื่อยังไม่เขียนรายละเอียดใน block</p></section>
-<section><h2>7) Object Properties</h2><div class='code'>s1.name = "Ann"
-s1.age = 20
+s2 = Student()</div><p>Class = แม่แบบ • Object/Instance = สิ่งที่สร้างจาก class • <b>s1 และ s2 เป็นคนละ object</b></p></section>
+<section><h2>2) Class Attribute vs Object Property</h2><div class='code'>class Student:
+    university = "KMITL"
 
-print(s1.name)
-print(s1.age)</div></section>
-<section><h2>7.2 Modify Object Properties</h2><div class='code'>s1.name = "May"
-s1.age = 21</div><p>แก้ property ด้วย assignment ค่าใหม่</p></section>
-<section><h2>7.3 Delete Object Properties</h2><div class='code'>del s1.age</div><p>ลบ property เฉพาะตัวด้วย <b>del object.property</b></p></section>
-<section><h2>8) Delete Objects</h2><div class='code'>del s1</div><p>ลบชื่อ/reference ของ object ที่กำหนด</p></section>
-<section><h2>คู่ที่ห้ามสับสน</h2><div class='grid'><div class='box'><b>Class vs Object</b><div>Class = แม่แบบ</div><div>Object = instance</div></div><div class='box'><b>del s1.age vs del s1</b><div>อันแรก = ลบ property</div><div>อันหลัง = ลบ object reference</div></div><div class='box'><b>Class Attribute vs Object Property</b><div>Class attribute = ระดับ class</div><div>Object property = ข้อมูลของแต่ละ object</div></div></div><p class='warn'>ในชีตนี้ไม่ใส่ Inheritance, Polymorphism, Abstract Class, Interface, Exception, SOLID หรือหัวข้ออื่น เพราะยังไม่อยู่ในรายการที่อาจารย์สอนแล้ว</p></section>
+s1 = Student()
+s2 = Student()
+
+s1.university = "ABC"</div><div class='grid'><div class='box'><b>s1.university</b> → ABC</div><div class='box'><b>s2.university</b> → KMITL</div><div class='box'><b>Student.university</b> → KMITL</div><div class='box'>เหตุผล: property ของ object สามารถ <b>บัง (shadow)</b> class attribute ที่ชื่อเดียวกัน</div></div></section>
+<section><h2>3) Attribute Lookup ที่ควรเข้าใจ</h2><p>เมื่ออ่าน <code>obj.x</code> ในระดับบทนี้ ให้คิดเป็นลำดับ:</p><div class='code'>1) obj มี property x ของตัวเองไหม?
+   → ถ้ามี: ใช้ค่านั้น
+2) ถ้าไม่มี: class มี attribute x ไหม?
+   → ถ้ามี: ใช้ค่าจาก class</div></section>
+<section><h2>4) Method และ self</h2><div class='code'>class Box:
+    value = 2
+    def show(self):
+        return self.value
+
+b = Box()
+b.value = 9
+print(b.show())   # 9</div><p><b>self</b> อ้างถึง object ที่กำลังเรียก method ดังนั้น <code>self.value</code> จึงอ่าน state ของ object นั้นก่อน</p></section>
+<section><h2>5) a.f() กับ A.f(a)</h2><div class='code'>class A:
+    def f(self):
+        return self
+
+a = A()
+
+a.f()
+A.f(a)</div><p>ในเชิงแนวคิด ทั้งสองกรณีส่ง object <code>a</code> เข้า parameter ตัวแรกของ method</p></section>
+<section><h2>6) Aliasing — จุดที่ข้อสอบชอบหลอก</h2><div class='code'>a = A()
+b = a
+
+b.x = 10
+print(a.x)   # 10</div><p><b>b = a ไม่ได้สร้าง object ใหม่</b> แต่ทำให้มี 2 ชื่ออ้างถึง object เดียวกัน</p></section>
+<section><h2>7) del property vs del object reference</h2><div class='grid'><div class='box'><div class='code'>del obj.x</div><p>ลบ property x ของ object</p></div><div class='box'><div class='code'>del obj</div><p>ลบชื่อ/reference obj</p></div></div><div class='warn'>ถ้ายังมีชื่ออื่นอ้าง object เดิมอยู่ เช่น <code>b = obj</code> แล้ว <code>del obj</code> → b ยังอาจใช้งาน object เดิมได้</div></section>
+<section><h2>8) del แล้ว class attribute โผล่กลับมา</h2><div class='code'>class A:
+    x = 1
+
+a = A()
+a.x = 9
+print(a.x)   # 9
+
+del a.x
+print(a.x)   # 1</div><p>เพราะ instance property x ถูกลบ แล้ว lookup กลับไปเจอ class attribute x</p></section>
+<section><h2>9) Naming & pass</h2><div class='grid'><div class='box'><b>Class Naming</b><div>PascalCase: StudentRecord, BankAccount</div></div><div class='box'><b>pass</b><div>placeholder เพื่อให้ block ว่าง syntax ถูกต้อง</div></div></div></section>
+<section><h2>10) Checklist ก่อนตอบข้อเขียน</h2><div class='warn'>ตอบให้ครบ 4 อย่าง: <b>(1) มี object กี่ตัว (2) ชื่อไหนเป็น alias (3) attribute มาจาก object หรือ class (4) del กำลังลบ property หรือ reference</b></div></section>
 </div></body></html>
