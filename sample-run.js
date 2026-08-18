@@ -76,16 +76,26 @@ async function sampleCapture(code,driver,btn){
   return String(await py.runPythonAsync(`
 import sys,io,traceback
 ns={}
-buf=io.StringIO()
 oo,oe=sys.stdout,sys.stderr
-sys.stdout=sys.stderr=buf
+
+# Run student's code silently so its own print() does not pollute testcase output.
+silent=io.StringIO()
+sys.stdout=sys.stderr=silent
 try:
     exec(USER_CODE,ns)
+finally:
+    sys.stdout,sys.stderr=oo,oe
+
+# Capture only the output produced by this testcase driver.
+buf=io.StringIO()
+sys.stdout=sys.stderr=buf
+try:
     exec(DRIVER_CODE,ns)
 except Exception:
     traceback.print_exc()
 finally:
     sys.stdout,sys.stderr=oo,oe
+
 buf.getvalue().rstrip()
 `)).replace(/\r\n/g,'\n').trimEnd();
 }
